@@ -156,6 +156,7 @@ class Client {
         $('.agario-promo-container').replaceWith(`
         <input onchange="localStorage.setItem('botNick', this.value);" id="botNick" maxlength="15" class="form-control" placeholder="Bot Name" value="LOL"></input>
         <input onchange="localStorage.setItem('botAmount', this.value);" id="BotAmount" maxlength="3" class="form-control" placeholder="Bot Amount" value="150"></input>
+	<button id='toggleButton' class='btn btn-danger'>Cannot exceed 200 bots, maximum of 200 bots will spawn even if you put higher. Feel free to PURCHASE a higher plan in GODBots</button>
         <center><button id="toggleButton" onclick="window.client.startBots(localStorage.getItem('botAmount'));" class="btn btn-success">Start Bots</button></center>
         `);
         if (!localStorage.getItem('botAmount')) localStorage.setItem('botAmount', 10);
@@ -165,8 +166,6 @@ class Client {
 
     startBots(amount) {
         if (this.authorized) return this.startBots2();
-	if amount > 200 ? amount = 200 : amount = amount;
-	    alert("Cannot exceed 200 bots, maximum of 200 bots will spawn even if you put higher. Feel free to PURCHASE a higher plan in GODBots")
         amount > 200 ? amount = 200 : amount = amount;
         for (let i = 0; i < amount; i++) {
             this.bots.push(new Bot(this.protocolKey, window.client.botID, `wss://${window.MC.getHost()}:443?party_id=${window.MC.getPartyToken()}`, false));
