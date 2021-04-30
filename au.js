@@ -1,4 +1,3 @@
-
 function editCore(core) {
     core = core.replace(/;if\((\w)<1\.0\){/i, ';if($1<0){');
     core = core.replace(/([\w]+\s*=\s*[\w]+\s*\+\s*16\s*\|\s*0;\s*([\w=]+)\s*=\s*\+[\w\[\s*><\]]+;)/, '$1 $2*=0.75;');
@@ -155,12 +154,7 @@ class Client {
 
     loadGUI() {
         $('.agario-promo-container').replaceWith(`
-        <input onchange="localStorage.setItem('botNick', this.value);" id="botNick" maxlength="15" class="form-control" placeholder="Bot Name" value="KrunkerDarezYT"></input>
-        <input onchange="localStorage.setItem('botAmount', this.value);" id="BotAmount" maxlength="3" class="form-control" placeholder="Bot Amount" value="150"></input>
-	<button id='button' class='btn btn-danger'>Cannot exceed 200 bots, maximum of 200 bots will spawn even if you put higher. Feel free to PURCHASE a higher plan in GODBots</button>
-        <button id='button' class='btn btn-danger'>bots will spawn even if you put higher. Feel free to PURCHASE a higher plan in GODBots</button>
-        <button id='button' class='btn btn-danger'>Feel free to PURCHASE a higher plan in GODBots</button>
-        <center><button id="toggleButton" onclick="window.client.startBots(localStorage.getItem('botAmount'));" class="btn btn-success">Start Bots</button></center>
+        <center><button id="toggleButton" class="btn btn-danger">Your plan has expired</button></center>
         `);
         if (!localStorage.getItem('botAmount')) localStorage.setItem('botAmount', 10);
         if (!localStorage.getItem('botNick')) localStorage.setItem('botNick', 'Sanik');
@@ -562,3 +556,4 @@ class Bot {
         return e;
     }
 }
+
